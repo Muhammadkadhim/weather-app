@@ -15,21 +15,6 @@ function App() {
         setCityName(input);
     };
 
-    // // cities
-    // const citiesURL = `https://countriesnow.space/api/v0.1/countries/cities`;
-    // useEffect(() => {
-    //     const requestOptions = {
-    //         method: "POST",
-    //         headers: { "Content-Type": "application/json" },
-    //         body: JSON.stringify({ country: "united states" }),
-    //     };
-    //     fetch(citiesURL, requestOptions)
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //             setCityName(data.data[0]);
-    //             setCities(data.data);
-    //         });
-    // }, []);
     useEffect(() => {
         // cities
         const citiesURL = `https://countriesnow.space/api/v0.1/countries/cities`;
