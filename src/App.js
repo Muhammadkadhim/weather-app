@@ -54,7 +54,7 @@ function App() {
                     <form className="input-group" onSubmit={getCityHandler}>
                         <input
                             className="form-control"
-                            placeholder="Cities in America"
+                            placeholder="Another Location"
                             autoComplete="off"
                             onChange={(e) => {
                                 setInput(e.target.value);
