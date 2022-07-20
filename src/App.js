@@ -4,7 +4,7 @@ import axios from "axios";
 function App() {
     const [input, setInput] = useState("");
     const [cities, setCities] = useState([]);
-    const [cityName, setCityName] = useState("erbil");
+    const [cityName, setCityName] = useState("");
     const [time, setTime] = useState("");
     const [temp, setTemp] = useState("");
     const [condition, setCondition] = useState("");
@@ -15,9 +15,24 @@ function App() {
         setCityName(input);
     };
 
-    // cities
-    const citiesURL = `https://countriesnow.space/api/v0.1/countries/cities`;
+    // // cities
+    // const citiesURL = `https://countriesnow.space/api/v0.1/countries/cities`;
+    // useEffect(() => {
+    //     const requestOptions = {
+    //         method: "POST",
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify({ country: "united states" }),
+    //     };
+    //     fetch(citiesURL, requestOptions)
+    //         .then((response) => response.json())
+    //         .then((data) => {
+    //             setCityName(data.data[0]);
+    //             setCities(data.data);
+    //         });
+    // }, []);
     useEffect(() => {
+        // cities
+        const citiesURL = `https://countriesnow.space/api/v0.1/countries/cities`;
         const requestOptions = {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -29,10 +44,10 @@ function App() {
                 setCityName(data.data[0]);
                 setCities(data.data);
             });
-    }, []);
-    // weather
-    const weatherURL = `http://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_API_KEY}&q=${cityName}&aqi=no`;
-    useEffect(() => {
+        // weather
+        const weatherURL = `http://api.weatherapi.com/v1/current.json?key=${
+            process.env.REACT_APP_API_KEY
+        }&q=${cityName || "Abbeville"}&aqi=no`;
         axios
             .get(weatherURL)
             .then((res) => {
