@@ -123,7 +123,7 @@ function App() {
                                         className="flex-grow-1"
                                         style={{ fontSize: "1rem" }}
                                     >
-                                        <div>
+                                        <div className="text-center">
                                             <i
                                                 className="fas fa-wind fa-fw"
                                                 style={{ color: "#868B94" }}
@@ -133,26 +133,6 @@ function App() {
                                                 {windKPH} km/h
                                             </span>
                                         </div>
-                                        {/* <div>
-                                            <i
-                                                className="fas fa-tint fa-fw"
-                                                style={{ color: "#868B94" }}
-                                            ></i>{" "}
-                                            <span className="ms-1"> 84% </span>
-                                        </div>
-                                        <div>
-                                            <i
-                                                className="fas fa-sun fa-fw"
-                                                style={{ color: "#868B94" }}
-                                            ></i>{" "}
-                                            <span className="ms-1"> 0.2h </span>
-                                        </div> */}
-                                    </div>
-                                    <div>
-                                        <img
-                                            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu1.webp"
-                                            width="100px"
-                                        />
                                     </div>
                                 </div>
                             </div>
