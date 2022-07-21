@@ -3,7 +3,7 @@
 > React.js - Built with the [Weather API](https://www.weatherapi.com/)
 
 A simple weather app that allows you to get current weather information, based on the city you enter.
-This project was a task given to students in a WeCode-FED bootcamp.
+This project was a task given to students in WeCode-FED bootcamp.
 
 [Live App](https://weather-app-mkh.netlify.app/)
 
