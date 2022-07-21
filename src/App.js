@@ -4,8 +4,8 @@ import { FaWind, FaMapMarkerAlt } from "react-icons/fa";
 
 function App() {
     const [input, setInput] = useState("");
-    const [cityName, setCityName] = useState("Erbil");
-    const [countryName, setCountryName] = useState("Iraq");
+    const [cityName, setCityName] = useState("London");
+    const [countryName, setCountryName] = useState("United Kingdom");
     const [localTime, setLocalTime] = useState("");
     const [temp, setTemp] = useState("");
     const [condition, setCondition] = useState("");
