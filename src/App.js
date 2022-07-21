@@ -12,6 +12,7 @@ function App() {
     const [windSpeed, setWindSpeed] = useState("");
     const [windDir, setWindDir] = useState("");
     const [icon, setIcon] = useState();
+    const [errorMsg, setErrorMsg] = useState("");
 
     const getCityHandler = (e) => {
         e.preventDefault();
@@ -21,31 +22,43 @@ function App() {
     useEffect(() => {
         // weather
         const weatherURL = `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_API_KEY}&q=${cityName}&aqi=no`;
-        axios.get(weatherURL).then((res) => {
-            setCondition(res.data.current.condition.text);
-            setWindSpeed(res.data.current.wind_kph);
-            setWindDir(res.data.current.wind_dir);
-            setTemp(res.data.current.temp_c);
-            setIcon(res.data.current.condition.icon);
-            setCountryName(res.data.location.country);
+        axios
+            .get(weatherURL)
+            .then((res) => {
+                setCondition(res.data.current.condition.text);
+                setWindSpeed(res.data.current.wind_kph);
+                setWindDir(res.data.current.wind_dir);
+                setTemp(res.data.current.temp_c);
+                setIcon(res.data.current.condition.icon);
+                setCountryName(res.data.location.country);
 
-            // getting the time
-            const now = new Date(res.data.location.localtime);
+                // getting the time
+                const now = new Date(res.data.location.localtime);
 
-            const time = now.toLocaleTimeString("en-US", {
-                hour: "2-digit",
-                minute: "2-digit",
+                const time = now.toLocaleTimeString("en-US", {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                });
+
+                setLocalTime(`${time}`);
+            })
+            .catch((err) => {
+                setErrorMsg("This Location Does not EXIST");
+                setCityName("London");
+                setCountryName("United Kingdom");
+                console.clear();
             });
-
-            setLocalTime(`${time}`);
-        });
     }, [cityName]);
+
+    useEffect(() => {
+        setErrorMsg("");
+    }, [input]);
 
     return (
         <section className="vh-100">
             <div className="container py-5 h-100">
                 <div
-                    className="row container  mx-auto"
+                    className="row container  mx-auto text-center"
                     style={{ width: "400px", paddingBottom: "5em" }}
                 >
                     <form className="input-group" onSubmit={getCityHandler}>
@@ -65,6 +78,11 @@ function App() {
                             search
                         </button>
                     </form>
+                    <div>
+                        <p style={{ color: "red", fontWeight: "bold" }}>
+                            {errorMsg}
+                        </p>
+                    </div>
                 </div>
                 <div className="row d-flex justify-content-center align-items-center h-100 ">
                     <div className="col-md-8 col-lg-6 col-xl-4">
