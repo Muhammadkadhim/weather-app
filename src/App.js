@@ -59,7 +59,7 @@ function App() {
             <div className="container py-5 h-100">
                 <div
                     className="row container  mx-auto text-center"
-                    style={{ width: "400px", paddingBottom: "5em" }}
+                    style={{ width: "400px" }}
                 >
                     <form className="input-group" onSubmit={getCityHandler}>
                         <input
