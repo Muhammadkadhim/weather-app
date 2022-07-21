@@ -5,6 +5,11 @@
 A simple weather app that allows you to get current weather information, based on the city you enter.
 This project was a task given to students in WeCode-FED bootcamp.
 
+
+## Tech Stack
+
+**Client:** React, Axios, Bootstrap
+
 [Live App](https://weather-app-mkh.netlify.app/)
 
 ![A screenshot of the app](./public/screenshot.png)
