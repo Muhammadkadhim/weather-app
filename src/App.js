@@ -21,27 +21,24 @@ function App() {
     useEffect(() => {
         // weather
         const weatherURL = `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_API_KEY}&q=${cityName}&aqi=no`;
-        axios
-            .get(weatherURL)
-            .then((res) => {
-                setCondition(res.data.current.condition.text);
-                setWindSpeed(res.data.current.wind_kph);
-                setWindDir(res.data.current.wind_dir);
-                setTemp(res.data.current.temp_c);
-                setIcon(res.data.current.condition.icon);
-                setCountryName(res.data.location.country);
+        axios.get(weatherURL).then((res) => {
+            setCondition(res.data.current.condition.text);
+            setWindSpeed(res.data.current.wind_kph);
+            setWindDir(res.data.current.wind_dir);
+            setTemp(res.data.current.temp_c);
+            setIcon(res.data.current.condition.icon);
+            setCountryName(res.data.location.country);
 
-                // getting the time
-                const now = new Date(res.data.location.localtime);
+            // getting the time
+            const now = new Date(res.data.location.localtime);
 
-                const time = now.toLocaleTimeString("en-US", {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                });
+            const time = now.toLocaleTimeString("en-US", {
+                hour: "2-digit",
+                minute: "2-digit",
+            });
 
-                setLocalTime(`${time}`);
-            })
-            .catch((err) => console.log(err));
+            setLocalTime(`${time}`);
+        });
     }, [cityName]);
 
     return (
@@ -49,7 +46,7 @@ function App() {
             <div className="container py-5 h-100">
                 <div
                     className="row container  mx-auto"
-                    style={{ width: "400px" }}
+                    style={{ width: "400px", paddingBottom: "5em" }}
                 >
                     <form className="input-group" onSubmit={getCityHandler}>
                         <input
@@ -69,7 +66,7 @@ function App() {
                         </button>
                     </form>
                 </div>
-                <div className="row d-flex justify-content-center align-items-center h-100">
+                <div className="row d-flex justify-content-center align-items-center h-100 ">
                     <div className="col-md-8 col-lg-6 col-xl-4">
                         <div
                             className="card"
